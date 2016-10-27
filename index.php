@@ -152,7 +152,7 @@ function printStat() {
 	asort( $GLOBALS['stat'] );
 
 	foreach ( $GLOBALS['players_tmp'] as $k => $player ) {
-		$tr .= '<tr>';
+
 
 		if ( !array_key_exists( $player['id'], $GLOBALS['stat'] ) ) {
 			$GLOBALS['stat'][$player['id']] = array();
@@ -174,17 +174,17 @@ function printStat() {
 			$GLOBALS['stat'][$player['id']]['win'] = 0;
 		}
 
-		$tr .= '<td>' . $player['id'] . '</td>' .
+		$tr .= '<tr>' .
+				'<td>' . $player['id'] . '</td>' .
 				'<td>' . $GLOBALS['stat'][$player['id']]['row_1'] . '</td>' .
 				'<td>' . $GLOBALS['stat'][$player['id']]['row_2'] . '</td>' .
 				'<td>' . $GLOBALS['stat'][$player['id']]['row_3'] . '</td>' .
 				'<td>' . $GLOBALS['stat'][$player['id']]['win'] . '</td>' .
-				'<td>' . ($GLOBALS['stat'][$player['id']]['win'] - $GLOBALS['stat'][$player['id']]['row_1']) . '</td>';
-
-		$tr .= '</tr>';
+				'<td>' . ($GLOBALS['stat'][$player['id']]['win'] - $GLOBALS['stat'][$player['id']]['row_1']) . '</td>' .
+				'</tr>';
 	}
-	echo "<table class='stat'>" . $tr . "</table>";
-	echo '* For game type = 3';
+	echo "<table class='stat'>" . $tr . "</table>" .
+	'* For game type = 2';
 }
 
 function start() {
